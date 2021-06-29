@@ -1,0 +1,1 @@
+export {generatePeople} from './generatePeople'
