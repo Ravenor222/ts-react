@@ -4,38 +4,28 @@ import {
   Route,  Link
 } from "react-router-dom";
 import './App.css';
-import {Home} from "./views/Home";
+import {Topics} from "./views/Topics";
+import {Landing} from "./views/Landing";
+import {Topic} from "./views/Topic";
 
 
 function App() {
   return (
       <Router>
-          <div>
-              <nav>
-                  <ul>
-                      <li>
-                          <Link to="/">Router</Link>
-                      </li>
-                      <li>
-                          <Link to="/home">Home</Link>
-                      </li>
-                      {/*<li>*/}
-                      {/*    <Link to="/users">Users</Link>*/}
-                      {/*</li>*/}
-                  </ul>
-              </nav>
-
+        <div>
               {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
               <Switch>
-                  {/*<Route path="/about">*/}
-                  {/*    <About />*/}
-                  {/*</Route>*/}
-                  {/*<Route path="/users">*/}
-                  {/*    <Users />*/}
-                  {/*</Route>*/}
-                  <Route path="/home">
-                      <Home/>
+
+
+                  <Route path={`/topics/:topicId`}>
+                      <Topic />
+                  </Route>
+                  <Route exact path="/topics">
+                      <Topics/>
+                  </Route>
+                  <Route exact path="/">
+                      <Landing />
                   </Route>
               </Switch>
           </div>
