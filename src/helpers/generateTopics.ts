@@ -3,6 +3,19 @@ import {
     adjectives,
     colors, animals, countries, languages
 } from 'unique-names-generator'
+import {LoremIpsum} from "lorem-ipsum";
+
+const lorem = new LoremIpsum({
+    sentencesPerParagraph: {
+        max: 5,
+        min: 2
+    },
+    wordsPerSentence: {
+        max: 12,
+        min: 4
+    }
+});
+
 
 export const generateTopics = (length : number) => {
     let newArray = [];
@@ -15,7 +28,8 @@ export const generateTopics = (length : number) => {
         });
         let newTopic = {
             id: counter,
-            name: name
+            name: name,
+            description: lorem.generateParagraphs(1)
         };
         newArray.push(newTopic);
         counter++;

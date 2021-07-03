@@ -3,8 +3,12 @@
 }
 
 .card-container {
-    height:15vh;
+    height: 300px;
     width:80%;
     margin:auto;
     margin-top:5%;
+}
+.side-by-side {
+    display:flex !important;
+    flex-direction: row;
 }

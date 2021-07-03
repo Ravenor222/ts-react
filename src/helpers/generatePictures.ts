@@ -1,22 +1,23 @@
-import {PictureParameters} from "../types/pictureParameters";
 import axios from 'axios'
 
-export const generatePictures = (config: PictureParameters): any => {
-    const {numberOfRecords, imageWidth, imageHeight} = config
-    let width  = (imageWidth ? imageWidth : 250);
-    let height = (imageHeight ? imageHeight : 250);
+export const generatePictures = (numberOfRecords: number): any => {
 
-    // for(let i = 0; i < numberOfRecords; i++) {
-    // }
     const promiseArray = []
     for(let i = 0; i < numberOfRecords; i++) {
-        let promise = axios.get(`https://picsum.photos/${width}/${height}`).then(
+
+        let promise = axios.get(`https://api.thecatapi.com/v1/images/search?api_key=${ze}`).then(
             (result) => result,
             (error) => console.log(error)
         )
         promiseArray.push(promise)
     }
-    return Promise.all(promiseArray).then((x) => x)
-
-    // let width =
+    return Promise.all(promiseArray).then(
+        (pictureArray) => {
+            let newArray = [];
+            for (const item of pictureArray) {
+                //@ts-ignore
+                newArray.push(item.data[0].url)
+            }
+            return newArray
+        })
 };
